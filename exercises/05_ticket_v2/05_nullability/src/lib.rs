@@ -35,8 +35,13 @@ impl Ticket {
             status,
         }
     }
+    /// Return the name of the person assigned to the ticket, if the ticket is in progress.
+    /// Returns `None` if the ticket is in the `ToDo` or `Done` state.
     pub fn assigned_to(&self) -> Option<&String> {
-        todo!()
+        match &self.status {
+            Status::InProgress { assigned_to } => Some(assigned_to),
+            _ => None,
+        }
     }
 }
 

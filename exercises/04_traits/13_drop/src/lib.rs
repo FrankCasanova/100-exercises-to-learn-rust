@@ -3,7 +3,7 @@
 //  You can see the expected API in the tests below.
 
 pub struct DropBomb {
-    defused: bool    
+    defused: bool,
 }
 
 impl DropBomb {

@@ -3,10 +3,6 @@
 
 use std::ops::Add;
 
-
-
-
-
 #[derive(PartialEq, Debug, Clone, Copy)]
 pub struct WrappingU32 {
     value: u32,
@@ -16,7 +12,9 @@ impl Add for WrappingU32 {
     type Output = Self;
 
     fn add(self, rhs: Self) -> Self::Output {
-        Self { value: self.value.wrapping_add(rhs.value) }
+        Self {
+            value: self.value.wrapping_add(rhs.value),
+        }
     }
 }
 

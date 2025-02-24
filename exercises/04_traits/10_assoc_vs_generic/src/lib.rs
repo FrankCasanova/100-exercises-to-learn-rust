@@ -28,7 +28,7 @@ impl Power<u16> for u32 {
 impl Power<&u16> for u32 {
     type Output = u32;
     fn power(&self, n: &u16) -> u32 {
-        self.pow(*n as u32) 
+        self.pow(*n as u32)
     }
 }
 
@@ -45,7 +45,6 @@ impl Power<&u32> for u32 {
         self.pow(*n)
     }
 }
-
 
 #[cfg(test)]
 mod tests {

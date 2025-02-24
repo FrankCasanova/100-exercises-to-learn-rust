@@ -12,4 +12,4 @@ pub fn min<T: Ord>(left: T, right: T) -> T {
     } else {
         right
     }
-}   
+}

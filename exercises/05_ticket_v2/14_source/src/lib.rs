@@ -1,4 +1,4 @@
-use crate::status::{Status, ParseStatusError};
+use crate::status::{ParseStatusError, Status};
 
 // We've seen how to declare modules in one of the earliest exercises, but
 // we haven't seen how to extract them into separate files.
@@ -25,7 +25,6 @@ pub enum TicketNewError {
     DescriptionTooLong,
     #[error("{0}")]
     InvaludStatus(#[from] ParseStatusError),
-
 }
 
 #[derive(Debug, PartialEq, Clone)]

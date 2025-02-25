@@ -27,7 +27,6 @@ pub struct Ticket {
     pub status: Status,
 }
 
-
 impl Ticket {
     pub fn new(title: TicketTitle, description: TicketDescription) -> Ticket {
         Ticket {
@@ -72,6 +71,3 @@ impl Ticket {
         self.status == Status::ToDo
     }
 }
-
-
-

@@ -42,17 +42,24 @@ impl Ticket {
         status: Status,
     ) -> Result<Ticket, TicketNewError> {
         if title.is_empty() {
-            return Err(TicketNewError::TitleError("Title cannot be empty".to_string()));
+            return Err(TicketNewError::TitleError(
+                "Title cannot be empty".to_string(),
+            ));
         }
         if title.len() > 50 {
-            return Err(TicketNewError::TitleError("Title cannot be longer than 50 bytes".to_string()));
+            return Err(TicketNewError::TitleError(
+                "Title cannot be longer than 50 bytes".to_string(),
+            ));
         }
         if description.is_empty() {
-            return Err(TicketNewError::DescriptionError("Description cannot be empty".to_string()));
+            return Err(TicketNewError::DescriptionError(
+                "Description cannot be empty".to_string(),
+            ));
         }
         if description.len() > 500 {
-            return Err(
-                TicketNewError::DescriptionError("Description cannot be longer than 500 bytes".to_string()),);
+            return Err(TicketNewError::DescriptionError(
+                "Description cannot be longer than 500 bytes".to_string(),
+            ));
         }
 
         Ok(Ticket {

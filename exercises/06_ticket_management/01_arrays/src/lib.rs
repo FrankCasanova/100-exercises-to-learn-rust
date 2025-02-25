@@ -2,7 +2,7 @@
 
 pub struct WeekTemperatures {
     // TODO: Add a new field to store the temperatures for each day of the week.
-    temperatures: [Option<i32>; 7]
+    temperatures: [Option<i32>; 7],
 }
 
 pub enum Weekday {

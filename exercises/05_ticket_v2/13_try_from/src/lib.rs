@@ -11,7 +11,7 @@ enum Status {
 #[derive(Debug, thiserror::Error)]
 #[error("{invalid_status} is not a valid status")]
 struct ParseStatusError {
-    invalid_status: String
+    invalid_status: String,
 }
 
 impl TryFrom<String> for Status {
@@ -22,8 +22,8 @@ impl TryFrom<String> for Status {
             "inprogress" => Ok(Status::InProgress),
             "done" => Ok(Status::Done),
             _ => Err(ParseStatusError {
-                invalid_status: value
-            })
+                invalid_status: value,
+            }),
         }
     }
 }
@@ -37,8 +37,8 @@ impl TryFrom<&str> for Status {
             "inprogress" => Ok(Status::InProgress),
             "done" => Ok(Status::Done),
             _ => Err(ParseStatusError {
-                invalid_status: value.to_string()
-            })
+                invalid_status: value.to_string(),
+            }),
         }
     }
 }

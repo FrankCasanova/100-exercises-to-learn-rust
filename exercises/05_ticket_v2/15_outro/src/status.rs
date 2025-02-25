@@ -1,6 +1,6 @@
 // TODO: Implement `TryFrom<String>` and `TryFrom<&str>` for the `Status` enum.
 //  The parsing should be case-insensitive.
-#[derive(Debug, PartialEq, Clone,)]
+#[derive(Debug, PartialEq, Clone)]
 pub enum Status {
     ToDo,
     InProgress,
@@ -8,8 +8,8 @@ pub enum Status {
 }
 #[derive(Debug, thiserror::Error)]
 #[error("`{invalid_status}` is not a valid status. Use one of: ToDo, InProgress, Done")]
-pub struct  StatusError {
-    invalid_status: String
+pub struct StatusError {
+    invalid_status: String,
 }
 
 impl TryFrom<String> for Status {
@@ -20,8 +20,8 @@ impl TryFrom<String> for Status {
             "inprogress" => Ok(Status::InProgress),
             "done" => Ok(Status::Done),
             _ => Err(StatusError {
-                invalid_status: value
-            })
+                invalid_status: value,
+            }),
         }
     }
 }
@@ -34,12 +34,11 @@ impl TryFrom<&str> for Status {
             "inprogress" => Ok(Status::InProgress),
             "done" => Ok(Status::Done),
             _ => Err(StatusError {
-                invalid_status: value.to_string()
-            })
+                invalid_status: value.to_string(),
+            }),
         }
     }
 }
-
 
 #[cfg(test)]
 mod tests {

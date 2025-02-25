@@ -28,9 +28,10 @@ fn easy_ticket(title: String, description: String, status: Status) -> Ticket {
         Ok(ticket) => ticket,
         Err(error) => match error {
             TicketNewError::TitleError(error) => panic!("{error}"),
-            TicketNewError::DescriptionError(error) => Ticket::new(title, "Description not provided".to_string(), status).unwrap()
-        }
-        
+            TicketNewError::DescriptionError(error) => {
+                Ticket::new(title, "Description not provided".to_string(), status).unwrap()
+            }
+        },
     }
 }
 

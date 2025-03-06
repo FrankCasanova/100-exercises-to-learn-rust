@@ -15,7 +15,22 @@
 use std::thread;
 
 pub fn sum(v: Vec<i32>) -> i32 {
-    todo!()
+    // find the midpoint of the vector
+    let mid = v.len() / 2;
+
+    // split the vector into two halves
+    let (left, right) = v.split_at(mid);
+
+    // allocate new vectors for each half
+    let right: Vec<i32> = right.to_vec();
+    let left: Vec<i32> = left.to_vec();
+
+    // spawn two threads, each of which will sum the elements in its half
+    let thread1: thread::JoinHandle<i32> = thread::spawn(move || left.iter().sum::<i32>());
+    let thread2: thread::JoinHandle<i32>= thread::spawn(move || right.iter().sum::<i32>());
+
+    // wait for both threads to finish and add up the results
+    thread1.join().unwrap() + thread2.join().unwrap()
 }
 
 #[cfg(test)]

@@ -26,3 +26,48 @@ pub struct Ticket {
     pub description: TicketDescription,
     pub status: Status,
 }
+
+impl Ticket {
+    pub fn new(title: TicketTitle, description: TicketDescription) -> Ticket {
+        Ticket {
+            title,
+            description,
+            status: Status::ToDo,
+        }
+    }
+
+    pub fn title(&self) -> &TicketTitle {
+        &self.title
+    }
+
+    pub fn description(&self) -> &TicketDescription {
+        &self.description
+    }
+    pub fn status(&self) -> &Status {
+        &self.status
+    }
+
+    pub fn change_status(&mut self, status: Status) {
+        self.status = status;
+    }
+
+    pub fn change_title(&mut self, title: TicketTitle) {
+        self.title = title;
+    }
+
+    pub fn change_description(&mut self, description: TicketDescription) {
+        self.description = description;
+    }
+
+    pub fn is_done(&self) -> bool {
+        self.status == Status::Done
+    }
+
+    pub fn is_in_progress(&self) -> bool {
+        self.status == Status::InProgress
+    }
+
+    pub fn is_to_do(&self) -> bool {
+        self.status == Status::ToDo
+    }
+}

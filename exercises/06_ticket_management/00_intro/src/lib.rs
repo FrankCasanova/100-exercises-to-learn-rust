@@ -1,14 +1,14 @@
-fn intro() -> &'static str {
+fn _intro() -> &'static str {
     // TODO: fix me 👇
-    "I'm ready to __!"
+    "I'm ready to build a ticket management system!"
 }
 
 #[cfg(test)]
 mod tests {
-    use crate::intro;
+    use crate::_intro;
 
     #[test]
     fn test_intro() {
-        assert_eq!(intro(), "I'm ready to build a ticket management system!");
+        assert_eq!(_intro(), "I'm ready to build a ticket management system!");
     }
 }

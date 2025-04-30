@@ -11,6 +11,7 @@ use ticket_fields::{TicketDescription, TicketTitle};
 #[derive(Clone)]
 pub struct TicketStore {
     tickets: Vec<Ticket>,
+    counter_id: u64,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -34,19 +35,37 @@ pub struct TicketDraft {
 pub enum Status {
     ToDo,
     InProgress,
-    Done,
+    Done
 }
 
 impl TicketStore {
     pub fn new() -> Self {
         Self {
             tickets: Vec::new(),
+            counter_id: 0,
+            
         }
     }
 
-    pub fn add_ticket(&mut self, ticket: Ticket) {
+    pub fn add_ticket(&mut self, ticket: TicketDraft) -> TicketId {
+        let id = self.counter_id;
+        self.counter_id += 1;
+        let ticket = Ticket {
+            id: TicketId(id),
+            title: ticket.title,
+            description: ticket.description,
+            status: Status::ToDo,
+        };
         self.tickets.push(ticket);
+        TicketId(id)
     }
+
+    pub fn get(&self, id: TicketId) -> Option<&Ticket> {
+        self.tickets.iter().find(|&t| t.id == id)
+    }
+
+
+    
 }
 
 #[cfg(test)]
@@ -73,7 +92,7 @@ mod tests {
             description: ticket_description(),
         };
         let id2 = store.add_ticket(draft2);
-        let ticket2 = store.get(id2).unwrap();
+        let _ticket2 = store.get(id2).unwrap();
 
         assert_ne!(id1, id2);
     }

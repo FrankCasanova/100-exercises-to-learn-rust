@@ -19,17 +19,17 @@ pub struct Order {
 }
 
 fn validation_product_name(product_name: &str) {
-    if product_name.len() > 300 && product_name.is_empty() {
+    if product_name.len() > 300 || product_name.is_empty() {
         panic!("Product name cannot be empty or longer than 300 bytes");
     }
 }
 fn validation_quantity(quantity: &u32) {
-    if quantity < &0 {
+    if quantity <= &0 {
         panic!("Quantity must be greater than 0");
     }
 }
 fn validation_unit_price(unit_price: &u32) {
-    if unit_price < &0 {
+    if unit_price <= &0 {
         panic!("Unit price must be greater than 0");
     }
 }

@@ -48,7 +48,7 @@ mod tests {
     #[test]
     fn tenth() {
         assert_eq!(fibonacci(10), 55);
-    }gn
+    }
 
     #[test]
     fn thirtieth() {
